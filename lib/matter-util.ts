@@ -1,11 +1,11 @@
 import fs from "fs";
 import matter from "gray-matter";
 
-export const getAllPosts = async () => {
-  const files = fs.readdirSync("posts");
+export const getAllBlogPosts = async () => {
+  const files = fs.readdirSync("posts/blog");
 
   const posts = files.map((fileName) => {
-    const file = fs.readFileSync(`posts/${fileName}`, "utf-8");
+    const file = fs.readFileSync(`posts/blog/${fileName}`, "utf-8");
     const { data: frontMatter, content } = matter(file);
 
     return {
@@ -18,10 +18,27 @@ export const getAllPosts = async () => {
   return posts;
 };
 
-export const getPostbySlug = async (slug: string) => {
-  const file = fs.readFileSync(`posts/${slug}.md`, "utf-8");
+export const getBlogPostbySlug = async (slug: string) => {
+  const file = fs.readFileSync(`posts/blog/${slug}.md`, "utf-8");
 
   const { data: frontMatter, content } = matter(file);
 
   return { frontMatter, content };
+};
+
+export const getAllNotePosts = async () => {
+  const files = fs.readdirSync("posts/note");
+
+  const posts = files.map((fileName) => {
+    const file = fs.readFileSync(`posts/note/${fileName}`, "utf-8");
+    const { data: frontMatter, content } = matter(file);
+
+    return {
+      frontMatter,
+      slug: fileName.replace(/\.md/, ""),
+      content,
+    };
+  });
+
+  return posts;
 };

@@ -13,15 +13,15 @@ const BlogPostCard = ({ frontMatter, slug }: PostProps) => {
       <PostInfo>
         <dt></dt>
         <dd>{frontMatter.date}</dd>
-        <dt></dt>
-        <dd className="line_bar">|</dd>
-        <dt></dt>
+        {/* <dt></dt>
+        <dd className="line_bar">|</dd> */}
+        {/* <dt></dt>
         {frontMatter.tags &&
           frontMatter.tags.map((tag, index) => (
             <dd key={index} className="post_tag">
               {tag}
             </dd>
-          ))}
+          ))} */}
       </PostInfo>
     </Root>
   );

@@ -1,13 +1,12 @@
-import { InferGetStaticPropsType } from "next";
 import { PostsProps } from "types/blog";
 import BlogPosts from "components/blog/BlogPosts";
 import { getAllBlogPosts } from "lib/matter-util";
-// InferGetStaticPropsType<typeof getStaticProps>
-const Home = ({ posts }: PostsProps) => {
+import BlogContainer from "container/BlogContainer";
+const BlogPage = ({ posts }: PostsProps) => {
   return (
-    <>
+    <BlogContainer>
       <BlogPosts posts={posts} />
-    </>
+    </BlogContainer>
   );
 };
 
@@ -19,4 +18,4 @@ export const getStaticProps = async () => {
     },
   };
 };
-export default Home;
+export default BlogPage;

@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 
 export const Root = styled.div`
-  max-width: 600px;
   border-bottom: 1px solid #ededed;
   margin: 0 auto 34px;
   clear: both;
@@ -15,7 +14,7 @@ export const PostTitle = styled.h2`
 
 export const PostSummary = styled.div`
   color: #666;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 `;
 
 export const PostInfo = styled.dl`
@@ -24,7 +23,6 @@ export const PostInfo = styled.dl`
 
   overflow: hidden;
   margin: 0;
-  padding-left: 4px;
   padding-bottom: 24px;
 
   font-size: 14px;
