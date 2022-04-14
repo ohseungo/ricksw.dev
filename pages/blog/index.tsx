@@ -1,8 +1,8 @@
-import { PostsProps } from "types/blog";
+import { BlogPostsProps } from "types/blog";
 import BlogPosts from "components/blog/BlogPosts";
 import { getAllBlogPosts } from "lib/matter-util";
 import BlogContainer from "container/BlogContainer";
-const BlogPage = ({ posts }: PostsProps) => {
+const BlogPage = ({ posts }: BlogPostsProps) => {
   return (
     <BlogContainer>
       <BlogPosts posts={posts} />
