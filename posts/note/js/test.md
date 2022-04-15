@@ -1,7 +1,7 @@
 ---
-title: 테스트 react
+title: 테스트
 description: 이건 테스트에요.
-date: 2022/04/01
+date: 2022/03/31
 ---
 
 ## Typescript 기반으로 Next.js 프로젝트 생성

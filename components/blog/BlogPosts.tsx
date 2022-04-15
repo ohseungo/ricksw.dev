@@ -1,8 +1,8 @@
-import { PostProps, PostsProps } from "types/blog";
+import { PostProps, BlogPostsProps } from "types/blog";
 import BlogPostCard from "./BlogPostCard";
 import { BlogPostsRoot } from "./BlogPosts.styled";
 
-const BlogPosts = ({ posts }: PostsProps) => {
+const BlogPosts = ({ posts }: BlogPostsProps) => {
   const sortFunction = (a: PostProps, b: PostProps) => {
     return (
       new Date(b.frontMatter.date).getTime() -

@@ -1,9 +1,9 @@
 import { InferGetStaticPropsType } from "next";
-import { PostsProps } from "types/blog";
+import { BlogPostsProps } from "types/blog";
 import BlogPosts from "components/blog/BlogPosts";
 import { getAllBlogPosts } from "lib/matter-util";
 // InferGetStaticPropsType<typeof getStaticProps>
-const Home = ({ posts }: PostsProps) => {
+const Home = ({ posts }: BlogPostsProps) => {
   return (
     <>
       <BlogPosts posts={posts} />

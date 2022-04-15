@@ -51,3 +51,11 @@ export const getAllNotePosts = async () => {
 
   return posts;
 };
+
+export const getNotePostbyTypeAndSlug = async (type: string, slug: string) => {
+  const file = fs.readFileSync(`posts/note/${type}/${slug}.md`, "utf-8");
+
+  const { data: frontMatter, content } = matter(file);
+
+  return { frontMatter, content };
+};

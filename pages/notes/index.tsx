@@ -1,12 +1,12 @@
 import { getAllNotePosts } from "lib/matter-util";
 import { NotePostsProps } from "types/blog";
-// import NotePosts from "components/note/NotePosts";
+import NotePosts from "components/note/NotePosts";
+
 const NotesPage = ({ posts }: NotePostsProps) => {
   console.log(posts);
   return (
     <div>
-      Hello
-      {/* <NotePosts posts={posts} /> */}
+      <NotePosts posts={posts} />
     </div>
   );
 };

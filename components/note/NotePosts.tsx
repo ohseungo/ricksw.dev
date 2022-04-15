@@ -1,27 +1,62 @@
 import noteDivisions from "constants/noteDivisions";
-import { PostProps, PostsProps } from "types/blog";
-const NotePosts = ({ posts }: PostsProps) => {
+import { PostProps, NotePostsProps, NotePostProps } from "types/blog";
+import { Root, Partition, NoteLink } from "./NotePosts.styled";
+
+import Link from "next/link";
+
+const NotePosts = ({ posts }: NotePostsProps) => {
+  const sortFunction = (a: PostProps, b: PostProps) => {
+    return (
+      new Date(b.frontMatter.date).getTime() -
+      new Date(a.frontMatter.date).getTime()
+    );
+  };
+
   return (
-    <div>
+    <Root>
       {noteDivisions.map((division, index) => {
-        if (!posts) return false;
-        const postDivision = posts.filter(
-          (post) => post.frontMatter.division === division.id
+        const filteredPosts = posts?.filter(
+          (post) => post.type === division.id
         );
 
         return (
-          <article key={division.id}>
-            <div>{division.title}</div>
-            <div>
-              {postDivision.map((post, index) => (
-                <div key={index}>{post.frontMatter.title}</div>
-              ))}
-            </div>
-          </article>
+          <NotePartition
+            key={division.id}
+            title={division.title}
+            posts={filteredPosts}
+          />
         );
       })}
-    </div>
+    </Root>
   );
+};
+
+interface PartitionProps {
+  title: string;
+  posts?: NotePostProps[];
+}
+const NotePartition = ({ title, posts }: PartitionProps) => {
+  if (posts && posts.length > 0) {
+    return (
+      <Partition>
+        <h1>{title}</h1>
+        {posts.map((post, index) => {
+          return (
+            <NoteLink key={index}>
+              <Link href={`./notes/${post.type}/${post.slug}`}>
+                <a>
+                  <em>{index + 1}</em>
+                  {post.frontMatter.title}
+                </a>
+              </Link>
+            </NoteLink>
+          );
+        })}
+      </Partition>
+    );
+  } else {
+    return <></>;
+  }
 };
 
 export default NotePosts;

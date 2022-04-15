@@ -1,5 +1,5 @@
 ---
-title: 테스트 react 2
+title: 테스트 2
 description: 이건 테스트에요.
 date: 2022/04/01
 ---
