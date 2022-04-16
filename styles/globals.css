@@ -6,8 +6,17 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Roboto, sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI,
+  font-family: sans-serif, Roboto, -apple-system, BlinkMacSystemFont, Segoe UI,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue;
+  /* #ededed */
+  --main-bg-color: #ffffff;
+  --main-txt-color: #171717;
+  --sub-txt-color: #444444;
+  --acct-txt-color: #c00707;
+
+  --sub-border-color: #ededed;
+  background: var(--main-bg-color);
+  color: var(--main-txt-color);
 }
 
 a {

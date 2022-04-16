@@ -1,54 +1,26 @@
 import styled from "@emotion/styled";
 
 export const Root = styled.div`
-  border-bottom: 1px solid #ededed;
-  margin: 0 auto 34px;
+  border-bottom: 1px solid var(--sub-border-color);
+  margin: 0 auto 42px;
   clear: both;
 `;
 
 export const PostTitle = styled.h2`
-  font-size: 24px;
-  padding-bottom: 10px;
+  font-size: 20px;
   margin: 0;
 `;
 
 export const PostSummary = styled.div`
-  color: #666;
-  padding-bottom: 10px;
+  color: var(--sub-txt-color);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-top: 16px;
 `;
 
-export const PostInfo = styled.dl`
-  display: flex;
-  align-items: center;
-
-  overflow: hidden;
-  margin: 0;
-  padding-bottom: 24px;
-
+export const PostInfo = styled.div`
+  margin-top: 16px;
+  margin-bottom: 24px;
+  color: var(--sub-txt-color);
   font-size: 14px;
-
-  dt {
-    margin: 0;
-    padding: 0;
-
-    float: left;
-    margin-right: 4px;
-  }
-  dd {
-    margin: 0;
-    padding: 0;
-
-    float: left;
-  }
-
-  .line_bar {
-    margin: 0 12px;
-  }
-
-  .post_tag {
-    margin: 0 2px;
-    padding: 4px 8px;
-    background-color: #eaeaea;
-    border-radius: 10px;
-  }
 `;

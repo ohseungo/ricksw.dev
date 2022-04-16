@@ -1,12 +1,13 @@
 import { InferGetStaticPropsType } from "next";
 import { BlogPostsProps } from "types/blog";
-import BlogPosts from "components/blog/BlogPosts";
+import RecentPosts from "components/home/RecentPosts";
 import { getAllBlogPosts } from "lib/matter-util";
+import HomeArea from "components/home/HomeArea";
 // InferGetStaticPropsType<typeof getStaticProps>
 const Home = ({ posts }: BlogPostsProps) => {
   return (
     <>
-      <BlogPosts posts={posts} />
+      <RecentPosts posts={posts} />
     </>
   );
 };

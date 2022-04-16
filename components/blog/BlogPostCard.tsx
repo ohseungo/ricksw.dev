@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { PostProps } from "types/blog";
 import { Root, PostTitle, PostSummary, PostInfo } from "./BlogPostCard.styled";
+import { dateToString } from "lib/string-util";
+
 const BlogPostCard = ({ frontMatter, slug }: PostProps) => {
   return (
     <Root>
@@ -10,19 +12,7 @@ const BlogPostCard = ({ frontMatter, slug }: PostProps) => {
         </Link>
       </PostTitle>
       <PostSummary>{frontMatter.description}</PostSummary>
-      <PostInfo>
-        <dt></dt>
-        <dd>{frontMatter.date}</dd>
-        {/* <dt></dt>
-        <dd className="line_bar">|</dd> */}
-        {/* <dt></dt>
-        {frontMatter.tags &&
-          frontMatter.tags.map((tag, index) => (
-            <dd key={index} className="post_tag">
-              {tag}
-            </dd>
-          ))} */}
-      </PostInfo>
+      <PostInfo>{dateToString(frontMatter.date)}</PostInfo>
     </Root>
   );
 };
