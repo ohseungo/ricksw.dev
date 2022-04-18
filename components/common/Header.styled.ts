@@ -12,8 +12,8 @@ export const HeaderRoot = styled.header`
   align-items: center;
   justify-content: space-between;
 
-  border-bottom: solid;
-  background-color: #ffffff;
+  border-bottom: solid var(--sub-border-color);
+  background-color: var(--main-bg-color);
 
   h1 {
     font-size: 20px;

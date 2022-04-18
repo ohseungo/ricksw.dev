@@ -1,4 +1,3 @@
-import PageTitle from "components/common/PageTitle";
 import { PostProps, BlogPostsProps } from "types/blog";
 import BlogPostCard from "../blog/BlogPostCard";
 import { Root } from "./RecentPosts.styled";
@@ -12,7 +11,6 @@ const RecentPosts = ({ posts }: BlogPostsProps) => {
   };
   return (
     <Root>
-      <PageTitle title="Recent Posts" />
       {posts &&
         posts.sort(sortFunction).map((post, index) => {
           return <BlogPostCard key={index} {...post} />;

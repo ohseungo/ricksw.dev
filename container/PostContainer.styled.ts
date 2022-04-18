@@ -1,16 +1,31 @@
 import styled from "@emotion/styled";
 
 export const Root = styled.section`
+  color: var(--sub-txt-color);
+  line-height: 150%;
   h1 {
+    line-height: 120%;
     font-size: 30px;
     font-weight: 800;
-    margin-top: 0;
-    margin-bottom: 12px;
+    margin: 30px 0 12px;
   }
-
+  h2 {
+    margin: 28px 0 0;
+  }
+  h3 {
+    margin: 20px 0 0;
+  }
+  h1,
+  h2,
+  h3 {
+    color: var(--main-txt-color);
+  }
   p {
     margin: 1em 0;
-    line-height: 150%;
+  }
+
+  img {
+    max-width: 100%;
   }
 `;
 
