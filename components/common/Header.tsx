@@ -1,7 +1,8 @@
 import Navbar from "./Navbar";
-import { HeaderRoot } from "./Header.styled";
+import { HeaderRoot, SubRoot } from "./Header.styled";
 
 import Link from "next/link";
+import DarkModeSlider from "./DarkModeSlider";
 
 const Header = () => {
   return (
@@ -9,7 +10,10 @@ const Header = () => {
       <Link href="/" passHref>
         <h1>RickSW.dev</h1>
       </Link>
-      <Navbar />
+      <SubRoot>
+        <Navbar />
+        <DarkModeSlider />
+      </SubRoot>
     </HeaderRoot>
   );
 };

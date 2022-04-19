@@ -19,4 +19,14 @@ export const HeaderRoot = styled.header`
     font-size: 20px;
     cursor: pointer;
   }
+
+  @media (max-width: 700px) {
+    padding: 0 20px;
+  }
+`;
+
+export const SubRoot = styled.div`
+  display: flex;
+
+  align-items: center;
 `;

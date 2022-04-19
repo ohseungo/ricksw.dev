@@ -9,18 +9,29 @@ body {
   font-family: sans-serif, Roboto, -apple-system, BlinkMacSystemFont, Segoe UI,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue;
   /* #ededed */
+
+  background: var(--main-bg-color);
+  color: var(--main-txt-color);
+}
+:root {
   --main-bg-color: #ffffff;
   --main-txt-color: #171717;
   --sub-txt-color: #444444;
   --acct-txt-color: #c00707;
 
   --sub-border-color: #ededed;
-  background: var(--main-bg-color);
-  color: var(--main-txt-color);
+}
+[data-theme="dark"] {
+  --main-bg-color: #171717;
+  --main-txt-color: #ffffff;
+  --sub-txt-color: #ffffff;
+  --acct-txt-color: #c00707;
+
+  --sub-border-color: #ededed;
 }
 
 a {
-  color: inherit;
+  color: var(--main-txt-color);
   text-decoration: none;
 }
 

@@ -27,6 +27,10 @@ export const Root = styled.section`
   img {
     max-width: 100%;
   }
+
+  @media (max-width: 700px) {
+    padding: 0 20px;
+  }
 `;
 
 export const PostDate = styled.div`
