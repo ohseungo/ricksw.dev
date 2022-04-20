@@ -23,11 +23,11 @@ body {
 }
 [data-theme="dark"] {
   --main-bg-color: #171717;
-  --main-txt-color: #ffffff;
-  --sub-txt-color: #ffffff;
+  --main-txt-color: #ededed;
+  --sub-txt-color: #bdbdbd;
   --acct-txt-color: #c00707;
 
-  --sub-border-color: #ededed;
+  --sub-border-color: #3a3a3a;
 }
 
 a {

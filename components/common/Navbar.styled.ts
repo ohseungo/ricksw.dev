@@ -4,5 +4,6 @@ export const NavbarRoot = styled.nav`
   a {
     font-size: 18px;
     padding-right: 24px;
+    font-weight: 500;
   }
 `;
