@@ -5,8 +5,8 @@ export const HeaderRoot = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  height: 50px;
-  padding: 0 calc((100% - 700px) / 2);
+  height: var(--header-height);
+  padding: 0 calc((100% - var(--page-max-width)) / 2);
 
   display: flex;
   align-items: center;

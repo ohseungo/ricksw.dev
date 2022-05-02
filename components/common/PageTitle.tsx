@@ -8,15 +8,7 @@ interface PageTitleProps {
 const PageTitle = ({ title, description }: PageTitleProps) => {
   return (
     <Root>
-      <Title>
-        {title}
-        {description && (
-          <>
-            <span className="bar">|</span>
-            <span className="title_des">{description}</span>
-          </>
-        )}
-      </Title>
+      <Title>{title}</Title>
     </Root>
   );
 };

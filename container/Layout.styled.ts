@@ -10,6 +10,6 @@ export const LayoutRoot = styled.div`
 
 export const Main = styled.div`
   width: 100%;
-  max-width: 700px;
+  max-width: var(--page-max-width);
   padding-bottom: 160px;
 `;

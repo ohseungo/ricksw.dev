@@ -12,6 +12,9 @@ body {
 
   background: var(--main-bg-color);
   color: var(--main-txt-color);
+
+  --page-max-width: 700px;
+  --header-height: 4rem;
 }
 :root {
   --main-bg-color: #ffffff;
@@ -22,9 +25,9 @@ body {
   --sub-border-color: #ededed;
 }
 [data-theme="dark"] {
-  --main-bg-color: #171717;
+  --main-bg-color: #17181c;
   --main-txt-color: #ededed;
-  --sub-txt-color: #bdbdbd;
+  --sub-txt-color: #cdcdcd;
   --acct-txt-color: #c00707;
 
   --sub-border-color: #3a3a3a;

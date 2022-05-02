@@ -7,7 +7,7 @@ export const Root = styled.div`
 `;
 
 export const PostTitle = styled.h2`
-  font-size: 20px;
+  font-size: 24px;
   margin: 0;
 `;
 
