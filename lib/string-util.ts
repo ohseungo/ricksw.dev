@@ -10,5 +10,5 @@ export const dateToString = (date: string) => {
     day: "numeric",
   };
 
-  return new Date(date).toLocaleDateString("ko-KR", options);
+  return new Date(date).toLocaleDateString("en-US", options);
 };

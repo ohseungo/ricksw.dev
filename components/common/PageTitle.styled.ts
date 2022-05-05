@@ -4,7 +4,9 @@ export const Root = styled.div``;
 
 export const Title = styled.h1`
   font-size: 36px;
-  margin: 24px 0;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
 `;
 // export const Title = styled.p`
 //   font-size: 24px;

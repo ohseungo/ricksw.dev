@@ -12,7 +12,9 @@ const BlogPostCard = ({ frontMatter, slug }: PostProps) => {
         </Link>
       </PostTitle>
       <PostSummary>{frontMatter.description}</PostSummary>
-      <PostInfo>{dateToString(frontMatter.date)}</PostInfo>
+      <PostInfo>
+        <span>{dateToString(frontMatter.date)}</span>
+      </PostInfo>
     </Root>
   );
 };

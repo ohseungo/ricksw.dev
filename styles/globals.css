@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+
 html,
 body {
   padding: 0;
@@ -13,22 +15,28 @@ body {
   background: var(--main-bg-color);
   color: var(--main-txt-color);
 
+  /* transition: background-color 300ms ease; */
+}
+
+body {
   --page-max-width: 700px;
   --header-height: 4rem;
 }
 :root {
   --main-bg-color: #ffffff;
   --main-txt-color: #171717;
+  --header-bg-color: #fbfbfb;
   --sub-txt-color: #444444;
-  --acct-txt-color: #c00707;
+  --acct-txt-color: #50d0d0;
 
   --sub-border-color: #ededed;
 }
 [data-theme="dark"] {
   --main-bg-color: #17181c;
+  --header-bg-color: #17181c;
   --main-txt-color: #ededed;
   --sub-txt-color: #cdcdcd;
-  --acct-txt-color: #c00707;
+  --acct-txt-color: #760f10;
 
   --sub-border-color: #3a3a3a;
 }
@@ -40,4 +48,5 @@ a {
 
 * {
   box-sizing: border-box;
+  transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out;
 }

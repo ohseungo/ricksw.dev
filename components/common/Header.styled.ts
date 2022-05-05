@@ -13,7 +13,7 @@ export const HeaderRoot = styled.header`
   justify-content: space-between;
 
   border-bottom: solid var(--sub-border-color);
-  background-color: var(--main-bg-color);
+  background-color: var(--header-bg-color);
 
   h1 {
     font-size: 20px;
