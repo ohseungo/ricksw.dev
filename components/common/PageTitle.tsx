@@ -1,4 +1,4 @@
-import { Root, Title } from "./PageTitle.styled";
+import { Description, Root, Title } from "./PageTitle.styled";
 
 interface PageTitleProps {
   title: string;
@@ -9,6 +9,7 @@ const PageTitle = ({ title, description }: PageTitleProps) => {
   return (
     <Root>
       <Title>{title}</Title>
+      {description && <Description>{description}</Description>}
     </Root>
   );
 };

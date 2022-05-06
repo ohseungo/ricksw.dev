@@ -16,6 +16,7 @@ export const HeaderRoot = styled.header`
   background-color: var(--header-bg-color);
 
   h1 {
+    font-weight: 800;
     font-size: 20px;
     cursor: pointer;
   }

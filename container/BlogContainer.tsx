@@ -7,7 +7,7 @@ interface ContainerProps {
 const BlogContainer = ({ children }: ContainerProps) => {
   return (
     <Root>
-      <PageTitle title="Blog" description="개발 경험을 기록하고 정리합니다." />
+      <PageTitle title="Blog" description="개발 경험을 기록하고 공유합니다." />
       {children}
     </Root>
   );

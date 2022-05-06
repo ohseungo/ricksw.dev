@@ -1,12 +1,19 @@
 import styled from "@emotion/styled";
 
-export const Root = styled.div``;
+export const Root = styled.div`
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+`;
 
 export const Title = styled.h1`
   font-size: 36px;
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   letter-spacing: 1px;
+`;
+
+export const Description = styled.div`
+  color: var(--sub-txt-color);
+  font-size: 16px;
 `;
 // export const Title = styled.p`
 //   font-size: 24px;
