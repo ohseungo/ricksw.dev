@@ -46,6 +46,10 @@ a {
   text-decoration: none;
 }
 
+hr {
+  border: solid 0.5px var(--sub-border-color);
+}
+
 * {
   box-sizing: border-box;
   transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out;

@@ -4,7 +4,6 @@ import NotePosts from "components/note/NotePosts";
 import PageTitle from "components/common/PageTitle";
 
 const NotesPage = ({ posts }: NotePostsProps) => {
-  console.log(posts);
   return (
     <div>
       <PageTitle title="Notes" description="공부하고 배운 지식을 정리합니다" />

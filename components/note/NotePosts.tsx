@@ -35,23 +35,23 @@ interface PartitionProps {
   title: string;
   posts?: NotePostProps[];
 }
+
 const NotePartition = ({ title, posts }: PartitionProps) => {
   if (posts && posts.length > 0) {
     return (
       <Partition>
         <h1>{title}</h1>
-        {posts.map((post, index) => {
-          return (
-            <NoteLink key={index}>
-              <Link href={`./notes/${post.type}/${post.slug}`}>
-                <a>
-                  <em>{index + 1}</em>
-                  {post.frontMatter.title}
-                </a>
-              </Link>
-            </NoteLink>
-          );
-        })}
+        <ol>
+          {posts.map((post, index) => {
+            return (
+              <NoteLink key={index}>
+                <Link href={`/notes/${post.type}/${post.slug}`}>
+                  <a>{post.frontMatter.title}</a>
+                </Link>
+              </NoteLink>
+            );
+          })}
+        </ol>
       </Partition>
     );
   } else {

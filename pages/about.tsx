@@ -2,6 +2,7 @@
 import { NextSeo } from "next-seo";
 import fs from "fs";
 import matter from "gray-matter";
+import ReactMarkdown from "react-markdown";
 
 import AboutContainer from "container/AboutContainer";
 import { PostProps } from "types/blog";
@@ -10,7 +11,7 @@ const AboutPage = ({ frontMatter, content }: PostProps) => {
   return (
     <AboutContainer>
       <NextSeo title="About" />
-      {content}
+      <ReactMarkdown>{content}</ReactMarkdown>
     </AboutContainer>
   );
 };
