@@ -1,6 +1,7 @@
 import { Params } from "next/dist/server/router";
 import fs from "fs";
 import ReactMarkdown from "react-markdown";
+import { NextSeo } from "next-seo";
 
 import { getNotePostbyTypeAndSlug } from "lib/matter-util";
 import { PostProps } from "types/blog";
@@ -13,6 +14,7 @@ const BlogPost = ({ frontMatter, content }: PostProps) => {
 
   return (
     <PostContainer frontMatter={frontMatter}>
+      <NextSeo title={frontMatter.title} />
       <ReactMarkdown components={{ code: CodeBlock, blockquote: Blockquote }}>
         {content}
       </ReactMarkdown>

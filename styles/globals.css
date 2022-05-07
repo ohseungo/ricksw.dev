@@ -36,14 +36,23 @@ body {
   --header-bg-color: #17181c;
   --main-txt-color: #ededed;
   --sub-txt-color: #cdcdcd;
-  --acct-txt-color: #760f10;
+  --acct-txt-color: #bb000e;
 
   --sub-border-color: #3a3a3a;
 }
 
 a {
+  display: inline-block;
   color: var(--main-txt-color);
   text-decoration: none;
+}
+a:hover {
+  /* color: var(--acct-txt-color); */
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--acct-txt-color);
+
+  text-underline-offset: 0.3rem;
 }
 
 hr {

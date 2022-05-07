@@ -35,6 +35,10 @@ export const Root = styled.section`
     margin-bottom: 3em;
   }
 
+  a {
+    text-decoration: underline;
+  }
+
   @media (max-width: 700px) {
     padding: 0 20px;
   }
