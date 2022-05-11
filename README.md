@@ -2,6 +2,8 @@
 
 Nextjs 기반 포트폴리오용 개인 블로그 제작
 
+[https://ricksw-dev.vercel.app/](https://ricksw-dev.vercel.app/)
+
 ## Tech Stack
 
 ### Frontend ( Only )
