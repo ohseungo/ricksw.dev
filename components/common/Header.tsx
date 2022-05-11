@@ -7,7 +7,7 @@ import DarkModeSlider from "./DarkModeSlider";
 const Header = () => {
   return (
     <HeaderRoot>
-      <Link href="/">
+      <Link href="/" passHref>
         <h1>RickSW.dev</h1>
       </Link>
       <SubRoot>

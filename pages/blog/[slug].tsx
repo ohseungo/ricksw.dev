@@ -14,7 +14,10 @@ const BlogPost = ({ frontMatter, content }: PostProps) => {
 
   return (
     <PostContainer frontMatter={frontMatter}>
-      <NextSeo title={frontMatter.title} />
+      <NextSeo
+        title={frontMatter.title}
+        description={frontMatter.description}
+      />
       <ReactMarkdown components={{ code: CodeBlock, blockquote: Blockquote }}>
         {content}
       </ReactMarkdown>

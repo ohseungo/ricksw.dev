@@ -71,16 +71,35 @@ var bar = function (fun) {
 };
 var baz = obj.foo;
 
-bar(obj.foo);
+bar(obj.foo); //콜백(일반)함수로 실행
 //log : window, ""
-baz();
+baz(); //일반 함수로 참조하여 실행
 //log : window, ""
 ```
 
 메소드로서 호출된다는 것이 중요하다. 호출되는 함수가 메소드인 사실은 전혀 상관이 없다.
-위와 같이 메소드가 일반 함수, 콜백 함수로서 실행되는 경우에는 전역 객체가 바인딩된다는 점에 주의한다.
+위와 같이 메소드가 다른 방식으로 실행되는 경우에는 다른 방식으로 바인딩된다는 점에 주의한다.
+
+## 일반 함수 호출 with Strict mode
+
+```js
+function foo() {
+  "use strict";
+  console.log(this);
+}
+
+foo(); //log : undefined
+window.foo(); // log : window
+```
+
+엄격 모드 하에서 일반 함수 호출 시에는 this 에 전역 객체가 바인딩되지 않는다.
+엄격 모드가 기본 세팅인 프레임워크를 사용할 때 주의해야한다.
+
+_이는 자바스크립트 내에서 설계상의 실수로, 일반 함수를 호출 시에는 this 바인딩이 되지 않는 것이 원칙적으로 맞는 과정이라고 한다._
 
 ## 생성자 함수 호출
+
+---
 
 ```js
 function Foo(name) {
@@ -94,3 +113,42 @@ Foo("foo"); //log : window
 
 new 키워드로 호출된 생성자 함수의 경우에는 새로 생성된 인스턴스다.
 생성자 함수가 대문자로 시작하는 것은 어디까지나 약속에 지나지 않는다. 일반 함수로 호출해버리면 마찬가지로 전역객체가 바인딩된다.
+
+## Apply, Call, Bind
+
+---
+
+```js
+var foo = function () {
+  console.log(this);
+};
+
+foo.call("foo"); // log : "foo"
+foo.apply("foo"); // log : "foo"
+foo.bind("foo")(); // log : "foo"
+```
+
+명시적으로 this 를 원하는 객체로 바인딩하는 방법도 있다. Apply, Call, Bind 메소드를 사용하면 원하는 함수의 this 에 원하는 객체를 참조시킬 수 있다.
+
+## 화살표 함수
+
+---
+
+```js
+var obj = {
+  name: "foo",
+  foo: function () {
+    console.log(this);
+    var bar = () => console.log(this);
+    bar(); // log : {name: 'foo', foo: ƒ}
+  },
+};
+
+obj.foo(); // log : {name: 'foo', foo: ƒ}
+```
+
+화살표 함수의 경우 완전히 다르게 작동한다. 호출되는 방식에 따라 결정되는 것이 아니라, 선언되었던 시점의 렉시컬 환경을 참조한다.
+
+위 코드의 경우, bar 는 일반함수로 되었지만 선언되었던 시점의 환경을 참조하여 객체를 this 에 바인딩한다.
+
+이런 방식 때문에 메소드로는 사용을 추천하지 않고, 의미가 없어지는 생성자 함수로는 애초에 생성하지 못하고 오류가 난다. apply, bind, call 도 적용이 되지 않는다.
