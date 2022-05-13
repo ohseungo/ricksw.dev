@@ -5,20 +5,20 @@ import { NextSeo } from "next-seo";
 
 import { getNotePostbyTypeAndSlug } from "lib/matter-util";
 import { PostProps } from "types/blog";
-import PostContainer from "container/PostContainer";
 import CodeBlock from "components/markdown/CodeBlock";
 import Blockquote from "components/markdown/Blockquote";
+import NoteContainer from "container/NoteContainer";
 
 const BlogPost = ({ frontMatter, content }: PostProps) => {
   if (!frontMatter) return false;
 
   return (
-    <PostContainer frontMatter={frontMatter}>
+    <NoteContainer frontMatter={frontMatter}>
       <NextSeo title={frontMatter.title} />
       <ReactMarkdown components={{ code: CodeBlock, blockquote: Blockquote }}>
         {content}
       </ReactMarkdown>
-    </PostContainer>
+    </NoteContainer>
   );
 };
 

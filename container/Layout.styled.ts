@@ -14,6 +14,6 @@ export const Main = styled.div`
   padding-bottom: 160px;
 
   @media (max-width: 700px) {
-    padding: 0 20px;
+    padding: 0 25px 160px;
   }
 `;
