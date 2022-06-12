@@ -1,6 +1,6 @@
 ---
 title: Client Side Routing 과 CRA HistoryFallback 설정
-description: BrowserRouter 를 통한 CSR 은 URL 직접 입력과 새로고침을 처리하지 못한다는 사실이 일반적입니다. 하지만 create-react-app 은 이러한 라우팅 처리가 모두 잘 되고 있는데요. 그렇다고 완벽하게 처리되느냐 하면 또 아닙니다. netlify 를 포함한 몇몇 배포 사이트에서는 이론대로 라우팅 처리가 되지 않고 있기 때문이죠. 이런 혼란스러운 현상의 이유에 대해 정리하였습니다.
+description: React router 에서 BrowserRouter 를 통한 라우팅 처리는 클라이언트 사이드 라우팅 특성상 URL 직접입력과 새로고침을 처리하지 못합니다. 하지만 create-react-app 에서는 문제가 없는 것 처럼 보입니다. 이 혼란스러운 현상의 이유에 대해 정리하였습니다.
 date: 2022/05/22
 tags:
   - react
