@@ -1,6 +1,6 @@
 ---
 title: Client Side Routing 과 CRA HistoryFallback 설정
-description: React router 에서 BrowserRouter 를 통한 라우팅 처리는 클라이언트 사이드 라우팅 특성상 URL 직접입력과 새로고침을 처리하지 못합니다. 하지만 create-react-app 에서는 문제가 없는 것 처럼 보입니다. 이 혼란스러운 현상의 이유에 대해 정리하였습니다.
+description: React router 에서 BrowserRouter 를 통한 라우팅 처리는 클라이언트 사이드 라우팅 특성상 URL 직접입력과 새로고침을 처리하지 못합니다. 하지만 create-react-app 으로 만든 웹페이지에서는 이러한 라우팅 문제가 없는 것처럼 보입니다. 정말 문제가 없는 건지 이러한 혼란스러운 현상에 대해 정리하였습니다.
 date: 2022/05/22
 tags:
   - react
