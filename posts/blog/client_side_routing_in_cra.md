@@ -16,10 +16,10 @@ SPA 에서 기존의 라우팅 구조를 사용하기 위한, 브라우저에서
 
 [Stack Overflow : React-router URLs don't work when refreshing or writing manually](https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-refreshing-or-writing-manually)
 
-React 로 개발한 SPA 는 싱글 페이지라는 특성에도 불구하고 라우팅 주소를 처리해야하는 상황이 자주 있습니다. 브라우저 라우터를 통한 Client Side Routing 은 이것을 도와주는데, 안타깝게도 서버에서 추가로 설정을 해주지 않으면 새로고침이나 주소 입력에 404를 띄우는 문제가 있습니다.
+React 로 개발한 SPA 는 싱글 페이지라는 특성에도 불구하고 라우팅 주소를 처리해야하는 상황이 자주 생긴다. 브라우저 라우터를 통한 Client Side Routing 은 이것을 도와주는데, 안타깝게도 서버에서 추가로 설정을 해주지 않으면 새로고침이나 주소 입력에 404를 띄우는 문제가 있다. ㄴ
 (자세한 이유와 관련 개념은 링크 참고)
 
-하지만 create-react-app 으로 제작한 프로젝트에서 이 라우팅이 문제없이 돌아가는 현상을 볼 수 있었습니다. 정확히는
+하지만 create-react-app 으로 제작한 프로젝트에서 이 라우팅이 문제없이 돌아가는 현상을 볼 수 있었는데, 정확히는
 
 - development
 - Vercel 를 통한 배포
@@ -30,11 +30,11 @@ React 로 개발한 SPA 는 싱글 페이지라는 특성에도 불구하고 라
 
 에서는 404 에러가 발생하였습니다.
 
-결론부터 쓰자면 이 현상은 CRA 에서 사전에 설정된 Webpack 설정 때문이었습니다.
+결론부터 쓰자면 이 현상은 CRA 에서 사전에 설정된 Webpack 설정 때문이었다
 
 ## HistoryFallback
 
-create-react-app 에는 react 를 쉽게 구현하기 위한 라이브러리 들이 이미 세팅이 되어있습니다. 그 중 대표적인 것이 번들링을 도와주는 webpack 입니다.
+create-react-app 에는 react 를 쉽게 구현하기 위한 라이브러리 들이 이미 세팅이 되어있습니다. 그 중 대표적인 것이 번들링을 도와주는 webpack 인데,
 
 이러한 라이브러리들의 설정은 원래는 감춰져있는 상태지만
 
