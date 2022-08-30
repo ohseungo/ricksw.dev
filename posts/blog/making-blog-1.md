@@ -1,6 +1,6 @@
 ---
 title: 개인 블로그 제작하기 - (1) 개요와 초기 세팅
-description: IT회사로 입사한지 4년차, 웹 개발에 입문한지 2년차. 다들 한다는 개인 사이드 프로젝트를 미루고 미루다 발등에 불이 떨어져서야 완성을 목표로 시작합니다. 이 프로젝트의 목표를 간단하게 소개하고, Typescript 기반 Nextjs 와 Tailwind 초기 세팅 방법에 대해 기록합니다.
+description: 욣해부터 시작한 개인 블로그 프로젝트의 목표를 간단하게 소개하고, 이를 위한 Typescript 기반 Nextjs 와 Tailwind 초기 세팅 방법에 대해 기록합니다.
 date: 2022/04/01
 tags:
   - nextjs
