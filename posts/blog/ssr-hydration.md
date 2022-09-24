@@ -1,8 +1,9 @@
 ---
-title: 서버 사이드 렌더링의 함정, Hydration
-description: Nextjs 를 통한 서버 사이드 렌더링 개발은 확실히 편하지만, 렌더링 방식 특성상 신경써야 할 부분이 더 많기도 합니다. SSR 개발을 처음 시작할 떄 놓치기 쉽지만 놓치면 안되는 hydration 개념에 대해 정리했습니다.
+title: CSR 과 SSR 사이 그 어딘가, Rehydration
+description: Nextjs 나 Gatsby 를 이용하여 React 애서 서버 사이드 렌더링을 구현하는 방법은 편리합니다. 하지만 Rehydration 를 포함한 렌더링 개념을 재대로 이해하지 않고 있다면 해결이 어려운 문제 상황에 빠지기 쉽습니다. CSR 베이스인 React 에서 SSR 을 구현할 때 놓치기 쉬운 개념인 Rehydration 에 대해 알아보겠습니다.
 date: 2022/04/17
 tags:
+  - react
   - nextjs
 ---
 
