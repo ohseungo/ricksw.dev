@@ -23,7 +23,7 @@ export const getBlogPostbySlug = async (slug: string) => {
 
   const { data: frontMatter, content } = matter(file);
 
-  return { frontMatter, content };
+  return { frontMatter, slug, content };
 };
 
 export const getAllNotePosts = async () => {

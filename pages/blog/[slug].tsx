@@ -7,9 +7,10 @@ import { PostProps } from "types/blog";
 import PostContainer from "container/PostContainer";
 import CodeBlock from "components/markdown/CodeBlock";
 import Blockquote from "components/markdown/Blockquote";
-import { NextSeo } from "next-seo";
+import metadata from "constants/metadata.json";
 
-const BlogPost = ({ frontMatter, content }: PostProps) => {
+import { NextSeo } from "next-seo";
+const BlogPost = ({ frontMatter, slug, content }: PostProps) => {
   if (!frontMatter) return false;
 
   return (
@@ -17,6 +18,12 @@ const BlogPost = ({ frontMatter, content }: PostProps) => {
       <NextSeo
         title={frontMatter.title}
         description={frontMatter.description}
+        canonical={`${metadata.site_url}/blog/${slug}`}
+        openGraph={{
+          title: frontMatter.title,
+          description: frontMatter.description,
+          url: `${metadata.site_url}/blog/${slug}`,
+        }}
       />
       <ReactMarkdown components={{ code: CodeBlock, blockquote: Blockquote }}>
         {content}
