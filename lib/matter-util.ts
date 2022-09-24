@@ -57,5 +57,5 @@ export const getNotePostbyTypeAndSlug = async (type: string, slug: string) => {
 
   const { data: frontMatter, content } = matter(file);
 
-  return { frontMatter, content };
+  return { frontMatter, type, slug, content };
 };

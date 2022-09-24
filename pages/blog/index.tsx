@@ -3,10 +3,17 @@ import BlogPosts from "components/blog/BlogPosts";
 import { getAllBlogPosts } from "lib/matter-util";
 import BlogContainer from "container/BlogContainer";
 import { NextSeo } from "next-seo";
+import metadata from "constants/metadata.json";
 const BlogPage = ({ posts }: BlogPostsProps) => {
   return (
     <BlogContainer>
-      <NextSeo title="Blog" />
+      <NextSeo
+        title="Blog"
+        canonical={`${metadata.site_url}/blog`}
+        openGraph={{
+          url: `${metadata.site_url}/blog`,
+        }}
+      />
       <BlogPosts posts={posts} />
     </BlogContainer>
   );

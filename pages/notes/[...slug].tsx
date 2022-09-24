@@ -4,17 +4,28 @@ import ReactMarkdown from "react-markdown";
 import { NextSeo } from "next-seo";
 
 import { getNotePostbyTypeAndSlug } from "lib/matter-util";
-import { PostProps } from "types/blog";
+import { NotePostProps } from "types/blog";
 import CodeBlock from "components/markdown/CodeBlock";
 import Blockquote from "components/markdown/Blockquote";
 import NoteContainer from "container/NoteContainer";
 
-const BlogPost = ({ frontMatter, content }: PostProps) => {
+import metadata from "constants/metadata.json";
+
+const BlogPost = ({ frontMatter, type, slug, content }: NotePostProps) => {
   if (!frontMatter) return false;
 
   return (
     <NoteContainer frontMatter={frontMatter}>
-      <NextSeo title={frontMatter.title} />
+      <NextSeo
+        title={frontMatter.title}
+        description={frontMatter.description}
+        canonical={`${metadata.site_url}/notes/${type}/${slug}`}
+        openGraph={{
+          title: frontMatter.title,
+          description: frontMatter.description,
+          url: `${metadata.site_url}/notes/${type}/${slug}`,
+        }}
+      />
       <ReactMarkdown components={{ code: CodeBlock, blockquote: Blockquote }}>
         {content}
       </ReactMarkdown>
