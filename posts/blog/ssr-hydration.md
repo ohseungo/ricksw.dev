@@ -1,21 +1,27 @@
 ---
-title: CSR 과 SSR 사이 그 어딘가, Rehydration
-description: Nextjs 나 Gatsby 를 이용하여 React 애서 서버 사이드 렌더링을 구현하는 방법은 편리합니다. 하지만 Rehydration 를 포함한 렌더링 개념을 재대로 이해하지 않고 있다면 해결이 어려운 문제 상황에 빠지기 쉽습니다. CSR 베이스인 React 에서 SSR 을 구현할 때 놓치기 쉬운 개념인 Rehydration 에 대해 알아보겠습니다.
+title: CSR 과 SSR 사이 그 어딘가, Hydration
+description: Nextjs 나 Gatsby 를 이용하여 React 애서 서버 사이드 렌더링을 구현하는 방법은 편리합니다. 하지만 Rehydration 를 포함한 렌더링 개념을 재대로 이해하지 않고 있다면 해결이 어려운 문제 상황에 빠지기 쉽습니다. CSR 베이스인 React 에서 SSR 을 구현할 때 놓치기 쉬운 개념인 Hydration 에 대해 알아보겠습니다.
 date: 2022/04/17
 tags:
   - react
   - nextjs
 ---
 
+최근 Nextjs 를 이용하여 이것저것 만져보면서 생소한 오류를 만나게 되었는데요.
+
 > Expected server HTML to contain a matching <tag명> in <tag명>
 
-Nextjs (또는 Gatsby) 로 개발을 처음 진행하다보면 쉽게 볼 수 있는 에러입니다.
+해결법 자체는 스택오버플로우에서 쉽게 찾을 수 있었습니다.
 
-이 글에서는 이 에러의 원인과 해결방법을, SSR 페이지를 개발할 때 알아야 할 Hydration 이라는 개념과 함께 설명합니다.
+[React 16: Warning: Expected server HTML to contain a matching div in body](https://stackoverflow.com/questions/46443652/react-16-warning-expected-server-html-to-contain-a-matching-div-in-body)
+
+그런데 이 오류는 왜 나오는 걸까요? 제 경우에는 화면 동작에는 아무런 문제가 없었지만 경고가 아니라 확실하게 **오류** 를 띄우고 있었습니다. 위 링크에서는 서버 사이드 렌더링에 대해 설명을 간략히 하면서, DOM 을 구성하는 순서 특성상 useEffect hook 을 써야한다... 이런 식으로 말하고 있습니다.
+
+이 에러는 React 가 서버 사이드 렌더링 과정에서 어떻게 동작하는지 재대로 이해하고 있지 못하면 발생하기 쉽고, 생각보다 심각한 오류가 나올 수 있습니다.
 
 ## CSR vs SSR
 
-Nextjs 를 포함한 SSR 기능을 제공하는 프레임워크와 기본 리액트가 브라우저에서 각각 어떻게 동작하는지 부터 다시 생각할 필요가 있습니다.
+Nextjs 를 포함한 SSR 기능을 제공하는 프레임워크와 기본 React 가 브라우저에서 각각 어떻게 동작하는지 부터 다시 생각할 필요가 있습니다.
 
 ![](/posts/blog/ssr-hydration/no-pre-rendering.png)
 
@@ -33,15 +39,15 @@ Nextjs 를 포함한 SSR 기능을 제공하는 프레임워크와 기본 리액
 </html>
 ```
 
-HTML을 전송받은 이후 필요한 JS 파일을 다운 받은 뒤 처음으로 화면을 렌더링하기 시작합니다.
+브라우저, 즉 클라이언트 측은 비어 있는 HTML을 전송받은 이후 필요한 JS 파일을 다운 받은 뒤 처음으로 화면을 렌더링하기 시작합니다.
 
 ![](/posts/blog/ssr-hydration/pre-rendering.png)
 
-서버 사이드 렌더링의 경우 스크립트를 서버단에서 해석하여 HTML이 렌더링된 이후에 전송됩니다. 즉, 서버에 페이지를 요청하면 페이지에 맞는 완전한 HTML 이 전송되는 방식입니다.
+서버 사이드 렌더링은 이러한 렌더링 과정이 서버에서 일어납니다. 서버에서 스크립트를 읽어 전체 HTML을 렌더링한 이후에 전송됩니다. 즉, 서버에 페이지를 요청하면 페이지에 맞는 완전한 HTML 이 전송되는 방식입니다.
 
-하지만 여전히 할 일이 남아있습니다. HTML 은 어디까지나 정적인 페이지일 뿐, 동적인 기능이나 이벤트 등을 추가하기 위해선 여전히 JS가 필요합니다. 따라서 브라우저는 역시 JS 를 다운 받은 이후, 렌더링된 HTML 에 적용합니다.
+하지만 이렇게 전송된 HTML 은 어디까지나 정적인 페이지일 뿐이고, 애니메이션이나 이벤트 등 동적인 기능을 추가하기 위해서는 JS 파일이 필요합니다. 따라서 React 를 통해 생성된 JS 파일을 함께 전송하여 화면에 적용합니다.
 
-**바로 이 작업을 Hydration 이라고 합니다**
+이러한 과정을 메마른 HTML 에 "수분을 보충하여" 동적인 화면을 렌더링한다고 하여, 이 작업을 바로 **Hydration** 이라고 부릅니다.
 
 ## 서버 측 페이지, 그리고 브라우저 측 페이지
 
