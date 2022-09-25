@@ -1,7 +1,7 @@
 ---
 title: CSR 과 SSR 사이 그 어딘가, Hydration
-description: Nextjs 나 Gatsby 를 이용하여 React 애서 서버 사이드 렌더링을 구현하는 방법은 편리합니다. 하지만 Rehydration 를 포함한 렌더링 개념을 재대로 이해하지 않고 있다면 해결이 어려운 문제 상황에 빠지기 쉽습니다. CSR 베이스인 React 에서 SSR 을 구현할 때 놓치기 쉬운 개념인 Hydration 에 대해 알아보겠습니다.
-date: 2022/04/17
+description: Nextjs 나 Gatsby 를 이용하여 React 애서 서버 사이드 렌더링을 구현하는 방법은 편리합니다. 하지만 Rehydration 를 포함한 렌더링 개념을 재대로 이해하지 않고 있다면 해결이 어려운 문제가 나오기 쉽습니다. CSR 베이스인 React 에서 SSR 을 구현할 때 놓치기 쉬운 개념인 Hydration 에 대해 알아보겠습니다.
+date: 2022/09/20
 tags:
   - react
   - nextjs
@@ -98,15 +98,29 @@ React 공식 문서에서도 이를 말하고 있습니다. 서버측과 클라�
 
 Hydration 과정에서 화면을 변경할 수는 있다고 하지만 이는 버그로 규정하고 있고, 무엇보다도 화면이 재대로 변경될 보장이 없기 때문에 코드를 수정해야한다고 명시하고 있습니다.
 
-따라서 위 코드도 에러를 발생시키는 코드가 되는 것입니다. 서버 측에서 정적 HTML 이 구성된 이후, 클리이언트 측에서 JS 파일을 적용하기 전까지는 쿠키 정보, 로그인 상태를 알 방법이 없기 때문에 필연적으로 Hydration 과정에서 화면이 달라지게 됩니다.
+> There are no guarantees that attribute differences will be patched up in case of mismatches.
+
+이를 수정하지 않는다면 Hydration 과정에서는 일반적인 렌더링과 달리 HTML 요소의 속성값들을 비교하고 재대로 일치시키지 않기 때문에 **예상하지 못한 방향으로 화면이 렌더링**되는 현상이 일어날 수 있습니다.
+
+```jsx
+export default function Home() {
+  <!-- 클라이언트 측에서 로딩된 JS파일을 실행하는 Rehyration 전까지는 이 값이 결정되지 않는다 -->
+  const cookies = new Cookies();
+
+  <!-- 따라서 전체 컴포넌트가 결정이 재대로 되지 않는다 -->
+  if (cookies.get("test")) {
+    return <CookiePage />;
+  } else {
+    return <DefaultPage />;
+  }
+}
+```
+
+서버 측에서 정적 HTML 이 구성된 이후부터, 클리이언트 측에서 JS 파일을 적용하기 전까지는 쿠키 정보, 로그인 상태를 알 방법이 없기 때문에 필연적으로 Hydration 과정에서 화면이 달라지게 됩니다.
 
 ## 해결방법
 
-SSR 에서 Rehydration 이라는 과정이 존재하는 이상 HTML 을 동일하게 맞춰줘야 하는데,
-
-그러면 처음 이슈와 같이 브라우저단에서 결정이 나는 동적 (Dynamic) 데이터에 대해서는 로직 처리를 어떻게 해줘야 할까요?
-
-컴포넌트가 마운트되어야만 작동을 하는 useEffect hook 을 이용하면 됩니다.
+방법에 상관없이 Hydration 이후 HTML 을 일치시켜주기만 하면 됩니다. 이 글의 예시처럼 클라이언트 측에서 결정되는 컴포넌트의 경우 대표적인 해결 방법은 다음과 같습니다.
 
 ```jsx
 export default function Home() {
@@ -127,9 +141,12 @@ export default function Home() {
 }
 ```
 
-이렇게 로직을 바꾸면 서버, 클라이언트(초기 렌더링 기준) 측의 컴포넌트가 모두 null 로 일치하게 되고, 마운트된 이후에 사용자 정보 판단을 하게 되어 rehydration 문제를 해결할 수 있게 된다.
+컴포넌트가 마운트된 이후, 즉 Hydration 과정이 끝난 이후 실행되는 useEffect hook 과 isMounted 라는 state 를 이용합니다. 서버에서 렌더링되는 컴포넌트와 Hydration 이후의 구조가 null 로 일치하고, 마운트된 이후에 동적으로 화면이 구성됩니다. (Rerendering)
 
-동적인 데이터에 의존적인 컴포넌트인 경우 이런식으로 로직을 세우면 rehydration 에서 나오는 문제 뿐만 아니라 화면이 뜬 이후에 다시 또 화면이 바뀌는 flickering 문제도 해결할 수 있다.
+## 마치며
+
+React, Vue 등을 포함한 SPA 개발에서 말하는 서버 사이드 렌더링은 사실 CSR + SSR 에 가깝다는 것을 이해하게 해준 경험이었습니다.
+순수한 서버 사이드 렌더링과 비교하기 위해 이렇게 hydrate 과정을 거치는 렌더링 방식을 Universal Rendering 이라고도 부른다는 것도 알게 되었는데, 처음부터 용어를 좀 구분해서 썼으면 좋지 않았을까 생각이 큽니다.
 
 ## Reference
 
@@ -137,4 +154,4 @@ export default function Home() {
 
 [https://stackoverflow.com/questions/62243026/expected-server-html-to-contain-a-matching-tag-in-tag](https://stackoverflow.com/questions/62243026/expected-server-html-to-contain-a-matching-tag-in-tag)
 
-[https://www.joshwcomeau.com/react/the-perils-of-rehydration/](https://www.joshwcomeau.com/react/the-perils-of-rehydration/)
+[Rendering on Web](https://web.dev/rendering-on-the-web/)
