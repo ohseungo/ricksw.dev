@@ -35,6 +35,7 @@ export const Root = styled.section`
   pre {
     margin-top: 2em;
     margin-bottom: 3em;
+    padding: 0 2em;
   }
 
   a {

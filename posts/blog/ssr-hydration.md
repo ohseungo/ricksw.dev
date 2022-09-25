@@ -104,10 +104,10 @@ Hydration 과정에서 화면을 변경할 수는 있다고 하지만 이는 버
 
 ```jsx
 export default function Home() {
-  <!-- 클라이언트 측에서 로딩된 JS파일을 실행하는 Rehyration 전까지는 이 값이 결정되지 않는다 -->
+  // JS파일을 실행하여 Rehyration 되기 전까지는 이 값이 결정되지 않는다
   const cookies = new Cookies();
 
-  <!-- 따라서 전체 컴포넌트가 결정이 재대로 되지 않는다 -->
+  // 따라서 전체 컴포넌트가 결정이 재대로 되지 않는다
   if (cookies.get("test")) {
     return <CookiePage />;
   } else {
