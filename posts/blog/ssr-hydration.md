@@ -51,7 +51,7 @@ Nextjs 를 포함한 SSR 기능을 제공하는 프레임워크와 기본 React 
 
 ## 서버 측 페이지, 그리고 브라우저 측 페이지
 
-아래 코드는 위에서 소개한 에러가 나오는 코드입니다.
+처음에 소개했던 에러를 띄우게 되는 간단한 코드를 보여드리겠습니다.
 
 ```jsx
 export default function Home() {
@@ -65,14 +65,14 @@ export default function Home() {
 }
 ```
 
-일반적인 React 지식으로는 큰 문제가 없어 보이는 코드입니다.
+기본적인 React 지식으로는 큰 문제가 없어 보이는 코드입니다.
 
 - 해당 쿠키가 있으면 CookiePage 컴포넌트를 표시한다.
 - 없으면 DefaultPage 컴포넌트를 표시한다.
 
 간단한 코드인데 왜 에러가 날까요?
 
-사실 이 에러는 로그인 기능을 추가하였을 때 가장 많이 보게 되는 에러이기도 합니다.
+아래와 같은 로그인 인증 기능을 구현하는 코드도 해당됩니다.
 
 ```jsx
 export default function Home() {
@@ -84,21 +84,21 @@ export default function Home() {
 }
 ```
 
-마찬가지로 문제가 없어 보입니다. 그런데 왜?
+이러한 코드들이 왜 문제가 되는 코드일까요?
 
-## Rehydration ≠ Rendering
+## Hydration ≠ Rendering
 
-Rehydration 은 렌더링이 완료된 페이지에 JS 를 적용하는 로직입니다.
+Hydration 은 렌더링이 완료된 정적 HTML 페이지에 JS 를 적용하는 과정입니다.
 
 **즉, Rehydration 과정에서 화면 변경이 일어나면 안됩니다.**
 
 > React expects that the rendered content is identical between the server and the client. It can patch up differences in text content, but you should treat mismatches as bugs and fix them. In development mode, React warns about mismatches during hydration. There are no guarantees that attribute differences will be patched up in case of mismatches.
 
-React 에서도 이를 말하고 있습니다. 서버측과 클라이언트측에서 렌더링된 페이지는 동일해야 합니다.
+React 공식 문서에서도 이를 말하고 있습니다. 서버측과 클라이언트측에서 렌더링되는 초기 페이지는 동일해야 합니다.
 
-Rehydration 과정에서 다른 부분을 수정해줄 수는 있다고 하지만, 버그로 규정하고 있고 재대로 수정될 보장도 없기 때문에 코드를 수정해야한다고 명시하고 있습니다.
+Hydration 과정에서 화면을 변경할 수는 있다고 하지만 이는 버그로 규정하고 있고, 무엇보다도 화면이 재대로 변경될 보장이 없기 때문에 코드를 수정해야한다고 명시하고 있습니다.
 
-그래서 위 코드도 에러를 발생시키는 코드가 되는 것입니다. 쿠키와 로그인 정보 모두 클라이언트, 브라우저 단에서 결정이 되는 로직이기 때문에 페이지가 다르게 렌더링될 수 있기 때문이죠.
+따라서 위 코드도 에러를 발생시키는 코드가 되는 것입니다. 서버 측에서 정적 HTML 이 구성된 이후, 클리이언트 측에서 JS 파일을 적용하기 전까지는 쿠키 정보, 로그인 상태를 알 방법이 없기 때문에 필연적으로 Hydration 과정에서 화면이 달라지게 됩니다.
 
 ## 해결방법
 
