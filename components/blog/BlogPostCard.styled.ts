@@ -24,7 +24,3 @@ export const PostInfo = styled.div`
   color: var(--sub-txt-color);
   font-size: 14px;
 `;
-
-export const PostArrowLink = styled.div`
-  color: var(--acct-txt-color);
-`;

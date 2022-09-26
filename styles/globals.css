@@ -29,6 +29,8 @@ body {
   --sub-txt-color: #444444;
   --acct-txt-color: #50d0d0;
 
+  --txt-underline-color: #444444;
+
   --sub-border-color: #ededed;
 }
 [data-theme="dark"] {
@@ -38,6 +40,7 @@ body {
   --sub-txt-color: #cdcdcd;
   --acct-txt-color: #bb000e;
 
+  --txt-underline-color: #cdcdcd;
   --sub-border-color: #3a3a3a;
 }
 
@@ -49,8 +52,8 @@ a {
 a:hover {
   /* color: var(--acct-txt-color); */
   text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-decoration-color: var(--acct-txt-color);
+  text-decoration-thickness: 1.7px;
+  text-decoration-color: var(--txt-underline-color);
 
   text-underline-offset: 0.3rem;
 }
