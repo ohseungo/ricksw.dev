@@ -154,4 +154,6 @@ React, Vue 등을 포함한 SPA 개발에서 말하는 서버 사이드 렌더�
 
 [https://stackoverflow.com/questions/62243026/expected-server-html-to-contain-a-matching-tag-in-tag](https://stackoverflow.com/questions/62243026/expected-server-html-to-contain-a-matching-tag-in-tag)
 
+[The Perils of Rehydration](https://www.joshwcomeau.com/react/the-perils-of-rehydration/)
+
 [Rendering on Web](https://web.dev/rendering-on-the-web/)
