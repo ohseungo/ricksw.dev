@@ -9,11 +9,13 @@ const RecentPosts = ({ posts }: BlogPostsProps) => {
       new Date(a.frontMatter.date).getTime()
     );
   };
+
+  posts = posts?.sort(sortFunction);
   const recentPosts = posts && posts.length > 5 ? posts?.slice(0, 5) : posts;
   return (
     <Root>
       {posts &&
-        recentPosts?.sort(sortFunction).map((post, index) => {
+        recentPosts?.map((post, index) => {
           return <BlogPostCard key={index} {...post} />;
         })}
     </Root>
