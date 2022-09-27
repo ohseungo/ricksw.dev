@@ -1,7 +1,7 @@
 ---
 title: CSR 과 SSR 사이 그 어딘가, Hydration
 description: Nextjs 나 Gatsby 를 이용하여 React 애서 서버 사이드 렌더링을 구현하는 방법은 편리합니다. 하지만 Rehydration 를 포함한 렌더링 개념을 재대로 이해하지 않고 있다면 해결이 어려운 문제가 나오기 쉽습니다. CSR 베이스인 React 에서 SSR 을 구현할 때 놓치기 쉬운 개념인 Hydration 에 대해 알아보겠습니다.
-date: 2022/09/20
+date: 2022/07/20
 tags:
   - react
   - nextjs

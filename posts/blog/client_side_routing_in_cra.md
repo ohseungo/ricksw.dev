@@ -1,6 +1,6 @@
 ---
 title: Client Side Routing 과 CRA HistoryFallback 설정
-description: React router 에서 BrowserRouter 를 통한 라우팅 처리는 클라이언트 사이드 라우팅 특성상 URL 직접입력과 새로고침을 처리하지 못합니다. 하지만 create-react-app 으로 만든 웹페이지에서는 이러한 라우팅 문제가 없는 것처럼 보입니다. 정말 문제가 없는 건지 이러한 혼란스러운 현상에 대해 정리하였습니다.
+description: React router 에서 BrowserRouter 는 클라이언트 사이드 라우팅 특성상 URL 직접입력과 새로고침을 처리하지 못합니다. 하지만 이상하게도 CRA 로 제작하여 Vercel 로 배포한 프로젝트가 정상적으로 처리되는 현상을 발견했습니다. 이 혼란스러운 현상을 분석하며 알게 된 CRA 설정에 대해 정리합니다.
 date: 2022/05/22
 tags:
   - react
@@ -19,7 +19,7 @@ SPA 에서 기존의 라우팅 구조를 사용하기 위한, 브라우저에서
 React 로 개발한 SPA 는 싱글 페이지라는 특성에도 불구하고 라우팅 주소를 처리해야하는 상황이 자주 생긴다. 브라우저 라우터를 통한 Client Side Routing 은 이것을 도와주는데, 안타깝게도 서버에서 추가로 설정을 해주지 않으면 새로고침이나 주소 입력에 404를 띄우는 문제가 있다. ㄴ
 (자세한 이유와 관련 개념은 링크 참고)
 
-하지만 create-react-app 으로 제작한 프로젝트에서 이 라우팅이 문제없이 돌아가는 현상을 볼 수 있었는데, 정확히는
+하지만 이번에 create-react-app 으로 제작한 프로젝트에서 이 라우팅이 문제없이 돌아가는 현상을 볼 수 있었는데, 정확히는
 
 - development
 - Vercel 를 통한 배포
@@ -30,7 +30,7 @@ React 로 개발한 SPA 는 싱글 페이지라는 특성에도 불구하고 라
 
 에서는 404 에러가 발생하였습니다.
 
-결론부터 쓰자면 이 현상은 CRA 에서 사전에 설정된 Webpack 설정 때문이었다
+결론부터 쓰자면 이 현상은 CRA 에서 사전에 설정된 Webpack 설정 때문이었는데요.
 
 ## HistoryFallback
 
@@ -42,9 +42,9 @@ create-react-app 에는 react 를 쉽게 구현하기 위한 라이브러리 들
 npm run eject
 ```
 
-라는 설정을 전부 추출해주는 역할을 한다.
+라는 설정을 전부 추출해주는 역할을 합니다.
 
-이를 수행하면 추출되는 webpack 에 관한 설정 중 개발 서버 구동을 위한 설정인 webpackDevServer.config.js 에서 다음과 같은 설정을 찾을 수 있다.
+이를 수행하면 추출되는 webpack 에 관한 설정 중 개발 서버 구동을 위한 설정인 webpackDevServer.config.js 에서 다음과 같은 설정을 찾을 수 있습니다.
 
 ```js
 historyApiFallback: {
@@ -57,7 +57,7 @@ historyApiFallback: {
 
 [github : history api fallback ](https://github.com/bripkens/connect-history-api-fallback)
 
-이 설정은 404 에러가 일어났을때 브라우저 내의 historyAPI 를 이용하여 사전에 설정된 index 파일 등을 대신 보여주는 설정이다.
+이 설정은 404 에러가 일어났을때 브라우저 내의 historyAPI 를 이용하여 사전에 설정된 index 파일 등을 대신 보여주는 설정입니다.
 
-이 설정으로 개발 서버 환경에서는 라우팅이 정상적으로 수행되는 것이다.
-또한 배포 서버의 경우 CRA 를 지원하는 배포 사이트 중 Vercel 과 같은 사이트는 이런 설정을 해주지만, netlify 와 같은 사이트의 경우 build 시 추가 설정을 해주지 않으면 이런 fallback 설정이 되지 않아서 일어난 현상이었다.
+이 설정으로 개발 서버 환경에서는 라우팅이 정상적으로 수행되는 것이었습니다.
+또한 배포 서버의 경우 CRA 를 지원하는 배포 사이트 중 Vercel 과 같은 사이트는 이런 설정을 해주지만, netlify 와 같은 사이트의 경우 build 시 추가 설정을 해주지 않으면 이런 fallback 설정을 하지 않아 404 에러가 발생하였던 것이었습니다.
