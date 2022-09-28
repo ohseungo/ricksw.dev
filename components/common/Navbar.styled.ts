@@ -5,4 +5,12 @@ export const NavbarRoot = styled.nav`
     font-size: 18px;
     padding-right: 20px;
   }
+
+  svg {
+    fill: var(--main-txt-color);
+
+    @media (min-width: 0px) {
+      display: none;
+    }
+  }
 `;
