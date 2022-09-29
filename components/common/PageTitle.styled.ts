@@ -6,6 +6,7 @@ export const Root = styled.div`
 `;
 
 export const Title = styled.h1`
+  font-weight: bold;
   font-size: 36px;
   margin-bottom: 0.5rem;
   letter-spacing: 1px;

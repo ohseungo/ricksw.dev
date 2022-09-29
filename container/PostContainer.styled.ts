@@ -6,15 +6,17 @@ export const Root = styled.section`
   h1 {
     line-height: 120%;
     font-size: 2.25rem;
-    font-weight: 800;
+    font-weight: bold;
     margin: 30px 0 12px;
   }
   h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 3.6rem 0 0;
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin: 2.5rem 0;
   }
   h3 {
+    font-size: 1.27rem;
+    font-weight: bold;
     margin: 20px 0 0;
   }
   h1,
@@ -24,9 +26,16 @@ export const Root = styled.section`
   }
   p {
     font-size: 1.125rem;
+    line-height: 1.625;
+    margin: 1.5rem 0;
   }
   ul {
     font-size: 1.125rem;
+    padding-left: 40px;
+  }
+  li {
+    display: list-item;
+    list-style-type: disc;
   }
   img {
     max-width: 100%;
