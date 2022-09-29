@@ -7,15 +7,16 @@ import { getNotePostbyTypeAndSlug } from "lib/matter-util";
 import { NotePostProps } from "types/blog";
 import CodeBlock from "components/markdown/CodeBlock";
 import Blockquote from "components/markdown/Blockquote";
-import NoteContainer from "container/NoteContainer";
+// import NoteContainer from "container/NoteContainer";
 
 import metadata from "constants/metadata.json";
+import PostContainer from "container/PostContainer";
 
 const BlogPost = ({ frontMatter, type, slug, content }: NotePostProps) => {
   if (!frontMatter) return false;
 
   return (
-    <NoteContainer frontMatter={frontMatter}>
+    <PostContainer frontMatter={frontMatter} pageType="Note">
       <NextSeo
         title={frontMatter.title}
         description={frontMatter.description}
@@ -29,7 +30,7 @@ const BlogPost = ({ frontMatter, type, slug, content }: NotePostProps) => {
       <ReactMarkdown components={{ code: CodeBlock, blockquote: Blockquote }}>
         {content}
       </ReactMarkdown>
-    </NoteContainer>
+    </PostContainer>
   );
 };
 
