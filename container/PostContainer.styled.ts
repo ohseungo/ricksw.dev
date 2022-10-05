@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const Root = styled.section`
   color: var(--sub-txt-color);
   line-height: 170%;
+
   h1 {
     line-height: 120%;
     font-size: 2.25rem;
@@ -54,6 +55,11 @@ export const Root = styled.section`
   @media (max-width: 700px) {
     padding: 0 20px;
   }
+`;
+
+export const PostHeader = styled.div`
+  margin-top: 4rem;
+  margin-bottom: 3rem;
 `;
 
 export const PostDate = styled.div`
